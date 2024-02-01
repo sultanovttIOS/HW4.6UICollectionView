@@ -19,8 +19,8 @@ class SecondViewController: UIViewController, UICollectionViewDataSource {
         layout.minimumInteritemSpacing = 10
         layout.scrollDirection = .vertical
         
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0,
-                                           bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0,
+                                           bottom: 10, right: 0)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
         cv.layer.cornerRadius = 16
@@ -57,8 +57,8 @@ class SecondViewController: UIViewController, UICollectionViewDataSource {
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
         
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0,
-                                           bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20,
+                                           bottom: 0, right: 20)
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
@@ -133,7 +133,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource {
         view.addSubview(horizontalCollectionView)
         horizontalCollectionView.snp.makeConstraints { make in
             make.top.equalTo(searchButton.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(20)
+            make.horizontalEdges.equalToSuperview()//.inset(20)
             make.height.equalTo(200)
         }
     }
@@ -159,17 +159,13 @@ class SecondViewController: UIViewController, UICollectionViewDataSource {
                          title: arrayInfo[indexPath.row].title,
                          recipes: arrayInfo[indexPath.row].recipes)
             return cell
-        } else {
-            guard indexPath.row < arrayInfo.count else {
-                return UICollectionViewCell()
-            }
-            
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
-                                                          for: indexPath) as! CustomCollectionViewCell
-            cell.setCell(arrayInfo[indexPath.row].imageName,
-                         title: arrayInfo[indexPath.row].title,
-                         recipes: arrayInfo[indexPath.row].recipes)
-            return cell
         }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
+                                                      for: indexPath) as! CustomCollectionViewCell
+        cell.setCell(arrayInfo[indexPath.row].imageName,
+                     title: arrayInfo[indexPath.row].title,
+                     recipes: arrayInfo[indexPath.row].recipes)
+        return cell
     }
 }
