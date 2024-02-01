@@ -61,7 +61,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource {
                                            bottom: 0, right: 0)
         
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .cyan
+        cv.backgroundColor = .clear
         cv.layer.cornerRadius = 16
         cv.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return cv
