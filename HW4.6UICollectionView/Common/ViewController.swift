@@ -57,7 +57,8 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         view.backgroundColor = .black
         configureNavigationBar()
         simpleCollectionView.dataSource = self
-        simpleCollectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        simpleCollectionView.register(CustomCollectionViewCell.self,
+                                      forCellWithReuseIdentifier: "cell")
         setupSearchBtn()
         setupSimpleCV()
         setupNextButton()

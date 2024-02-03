@@ -27,7 +27,7 @@ class SecondViewController: UIViewController, UICollectionViewDataSource {
         cv.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return cv
     }()
-    
+
     private let arrayInfo: [Simple] = [Simple(imageName: "1", title: "Salad", recipes: "16.233 reciepes"),
                                        Simple(imageName: "2", title: "Burger", recipes: "12.432 reciepes"),
                                        Simple(imageName: "3", title: "Pizza", recipes: "23.421 reciepes"),
@@ -153,16 +153,14 @@ class SecondViewController: UIViewController, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == horizontalCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
-                                                          for: indexPath) as! CustomCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
             cell.setCell(arrayInfo[indexPath.row].imageName,
                          title: arrayInfo[indexPath.row].title,
                          recipes: arrayInfo[indexPath.row].recipes)
             return cell
         }
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
-                                                      for: indexPath) as! CustomCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CustomCollectionViewCell
         cell.setCell(arrayInfo[indexPath.row].imageName,
                      title: arrayInfo[indexPath.row].title,
                      recipes: arrayInfo[indexPath.row].recipes)

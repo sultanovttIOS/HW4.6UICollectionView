@@ -5,7 +5,8 @@
 //  Created by Alisher Sultanov on 31/1/24.
 //
 
-import Foundation
+import UIKit
+import SnapKit
 
 struct Simple {
     let imageName: String
