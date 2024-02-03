@@ -10,11 +10,11 @@ import SnapKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
     
-    private let photoIV = MakerView.shared.makerImageView(imageName: "", cornerRadius: 16)
+    private let photoIV = MakerView.shared.makerImageView(cornerRadius: 16)
     
-    private let titleLabel = MakerView.shared.makerLabel(text: "", font: UIFont.systemFont(ofSize: 16, weight: .semibold), textColor: .white, numberOfLines: 1)
+    private let titleLabel = MakerView.shared.makerLabel(font: UIFont.systemFont(ofSize: 16, weight: .semibold), textColor: .white, numberOfLines: 1)
     
-    private let recipesLabel = MakerView.shared.makerLabel(text: "", font: UIFont.systemFont(ofSize: 13, weight: .regular), textColor: .systemBackground, numberOfLines: 1)
+    private let recipesLabel = MakerView.shared.makerLabel(font: UIFont.systemFont(ofSize: 13, weight: .regular), textColor: .systemBackground, numberOfLines: 1)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,8 +31,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     private func setupPhotoIV() {
         contentView.addSubview(photoIV)
-//        photoIV.backgroundColor = .gray
-//        photoIV.layer.cornerRadius = 16
         photoIV.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top)
             make.horizontalEdges.equalToSuperview()

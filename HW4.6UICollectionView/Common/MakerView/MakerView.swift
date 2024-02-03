@@ -12,7 +12,7 @@ class MakerView {
     
     static let shared = MakerView()
     
-    func makerLabel(text: String,
+    func makerLabel(text: String? = nil,
                     font: UIFont,
                     textColor: UIColor,
                     textAlignment: NSTextAlignment = .left,
@@ -26,27 +26,32 @@ class MakerView {
         return label
     }
     
-    func makerImageView(imageName: String,
+    func makerImageView(imageName: String? = nil,
                         cornerRadius: CGFloat,
                         clipsToBounds: Bool = true,
                         contentMode: UIView.ContentMode = .scaleAspectFill) -> UIImageView {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: imageName)
+        
+        if let imageName = imageName {
+            imageView.image = UIImage(named: imageName)
+        }
+        
         imageView.layer.cornerRadius = cornerRadius
         imageView.clipsToBounds = clipsToBounds
         imageView.contentMode = contentMode
+        
         return imageView
     }
     
-    func makerButton(title: String?,
+    func makerButton(title: String? = nil,
                      for state: UIControl.State = .normal,
-                     imageName: String,
+                     imageName: String? = nil,
                      tintColor: UIColor,
                      backgroundColor: UIColor,
                      cornerRadius: CGFloat) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle(title, for: state)
-        button.setImage(UIImage(named: imageName), for: .normal)
+        button.setImage(imageName != nil ? UIImage(named: imageName!) : nil, for: .normal)
         button.tintColor = tintColor
         button.backgroundColor = backgroundColor
         button.layer.cornerRadius = cornerRadius

@@ -10,7 +10,7 @@ import SnapKit
 
 class ViewController: UIViewController, UICollectionViewDataSource {
     
-    private let nextButton = MakerView.shared.makerButton(title: "NextPage", imageName: "", tintColor: .white,
+    private let nextButton = MakerView.shared.makerButton(title: "NextPage", imageName: nil, tintColor: .white,
                                                           backgroundColor: .orange, cornerRadius: 12)
     
     private let infoArray: [Simple] = [Simple(imageName: "1", title: "Salad", recipes: "16.233 reciepes"),
@@ -26,7 +26,7 @@ class ViewController: UIViewController, UICollectionViewDataSource {
                                        Simple(imageName: "11", title: "Soup", recipes: "18.240 reciepes"),
                                        Simple(imageName: "12", title: "Bread", recipes: "13.467 reciepes")]
     
-    private let searchBtn = MakerView.shared.makerButton(title: "", imageName: "search", tintColor: .white,
+    private let searchBtn = MakerView.shared.makerButton(imageName: "search", tintColor: .white,
                                                          backgroundColor: .clear, cornerRadius: 0)
     
     private let simpleCollectionView: UICollectionView = {
@@ -59,19 +59,19 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         simpleCollectionView.dataSource = self
         simpleCollectionView.register(CustomCollectionViewCell.self,
                                       forCellWithReuseIdentifier: "cell")
+        setupNextButton()
         setupSearchBtn()
         setupSimpleCV()
-        setupNextButton()
     }
     
     private func setupNextButton() {
         view.addSubview(nextButton)
         nextButton.snp.makeConstraints { make in
-            make.top.equalTo(simpleCollectionView.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(100)
+            make.bottom.equalTo(view.snp.bottom).offset(-20)
+            //make.top.equalTo(simpleCollectionView.snp.bottom).offset(10)
+            //make.horizontalEdges.equalToSuperview().inset(100)
             make.centerX.equalTo(view.snp.centerX)
             make.height.equalTo(30)
-            make.bottom.equalTo(view.snp.bottom).offset(-25)
         }
         nextButton.addTarget(self, action: #selector(goNextPage), for: .touchUpInside)
     }
@@ -85,7 +85,7 @@ class ViewController: UIViewController, UICollectionViewDataSource {
         simpleCollectionView.snp.makeConstraints { make in
             make.top.equalTo(searchBtn.snp.bottom).offset(10)
             make.horizontalEdges.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(nextButton.snp.top).offset(-10)
         }
     }
     
